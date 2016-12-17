@@ -1,0 +1,6 @@
+#!/bin/sh
+
+#Navigation
+alias ..="cd .."
+alias dd="~/Stažené"
+alias dw="~/Workspace"
