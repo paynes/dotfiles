@@ -2,5 +2,14 @@
 
 #Navigation
 alias ..="cd .."
-alias dd="~/Stažené"
+alias dd="~/Downloads"
 alias dw="~/Workspace"
+
+#Processes
+alias pk=process_kill()
+
+
+#Functions
+process_kill() {
+	kill $(ps -C $1 -o pid=)
+}

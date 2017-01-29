@@ -1,15 +1,15 @@
 #!/bin/bash
 
-############################## Path variables
+#### Path variables ####
 dotfiles_dir=~/.dotfiles
 old_dotfiles_dir=~/.dotfiles_old
 dotfiles_path="dotfiles/"
 dotfiles=`ls $dotfiles_path`
 
 
-############################## Colors
-reset=`tput sgr0`
-red=`tput setaf 1`
+#### Colors ####
+reset=$(tput sgr0);
+red=$(tput setaf 124);
 
 
 
@@ -27,7 +27,7 @@ echo "...done"
 echo "Moving existing dotfiles to ${red}$old_dotfiles_dir${reset}"
 for file in $dotfiles; 
 	do
-		if [ ! -f $file ]; then
+		if [ ! -e ~/.$file ]; then
 			echo "File ${red}$file${reset} won't be backuped because it doesn't exist"
 		else
 			echo -n "Backup ${red}$file${reset} dotfile"
@@ -35,7 +35,7 @@ for file in $dotfiles;
 			echo "...done"
 		fi
 	done
-echo "...done"
+
 
 #Move new dotfiles to dotfiles directory
 for file in $dotfiles
