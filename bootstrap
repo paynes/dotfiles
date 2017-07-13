@@ -25,7 +25,7 @@ echo "...done"
 
 #Move existing dotfiles to dotfiles_old directory
 echo "Moving existing dotfiles to ${red}$old_dotfiles_dir${reset}"
-for file in $dotfiles; 
+for file in $dotfiles_dir; 
 	do
 		if [ ! -e ~/.$file ]; then
 			echo "File ${red}$file${reset} won't be backuped because it doesn't exist"
