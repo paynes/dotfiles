@@ -18,24 +18,23 @@ echo -n "Creating ${red}$old_dotfiles_dir${reset} for backup of any existing dot
 mkdir -p $old_dotfiles_dir
 echo "...done"
 
-#Create directory for dotfiles
-echo -n "Creating ${red}$dotfiles_dir${reset} for dotfiles"
-mkdir -p $dotfiles_dir
-echo "...done"
-
 #Move existing dotfiles to dotfiles_old directory
 echo "Moving existing dotfiles to ${red}$old_dotfiles_dir${reset}"
-for file in $dotfiles_dir; 
+for file in $dotfiles
 	do
 		if [ ! -e ~/.$file ]; then
 			echo "File ${red}$file${reset} won't be backuped because it doesn't exist"
 		else
 			echo -n "Backup ${red}$file${reset} dotfile"
-			mv ~/.$file $old_dotfiles_dir
+			cp -L ~/.$file $old_dotfiles_dir
 			echo "...done"
 		fi
 	done
 
+#Create directory for dotfiles
+echo -n "Creating ${red}$dotfiles_dir${reset} for dotfiles"
+mkdir -p $dotfiles_dir
+echo "...done"
 
 #Move new dotfiles to dotfiles directory
 for file in $dotfiles
