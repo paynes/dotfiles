@@ -2,8 +2,8 @@
 
 #Navigation
 alias ..="cd .."
-alias dd="~/Downloads"
-alias dw="~/Workspace"
+alias ddd="cd ~/Downloads"
+alias dw="cd ~/Workspace"
 
 #Processes
 alias pk=process_kill()
@@ -13,3 +13,5 @@ alias pk=process_kill()
 process_kill() {
 	kill $(ps -C $1 -o pid=)
 }
+
+

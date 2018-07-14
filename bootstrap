@@ -14,9 +14,11 @@ red=$(tput setaf 124);
 
 
 #Create directory for old dotfiles
-echo -n "Creating ${red}$old_dotfiles_dir${reset} for backup of any existing dotfiles in ~"
-mkdir -p $old_dotfiles_dir
-echo "...done"
+if [ ! -d $old_dotfiles_dir ]; then
+	echo -n "Creating ${red}$old_dotfiles_dir${reset} for backup of any existing dotfiles in ~"
+	mkdir -p $old_dotfiles_dir
+	echo "...done"
+fi
 
 #Move existing dotfiles to dotfiles_old directory
 echo "Moving existing dotfiles to ${red}$old_dotfiles_dir${reset}"
@@ -43,7 +45,14 @@ for file in $dotfiles
 		cp $dotfiles_path$file $dotfiles_dir/
 		echo "...done"
 
-		if [ ! -h ~/.$file ]; then
+		if [ ! -e ~/.$file ]; then
+			echo -n "Create symlink .$file"
+			ln -s $dotfiles_dir/$file ~/.$file
+			echo "...done"
+		else 
+			echo -n "Delete old .$file"
+			rm ~/.$file
+			echo "...done"
 			echo -n "Create symlink .$file"
 			ln -s $dotfiles_dir/$file ~/.$file
 			echo "...done"
