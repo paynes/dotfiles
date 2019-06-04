@@ -3,9 +3,10 @@
 #Function checks if user is not root
 is_root() {
         if [ $(id -u) -eq 0 ]; then
-                return 1
+                error "Error, Need to call this script as normal user, not as a root."
+		exit_f
         else
-                return 0
+                ok
         fi
 }
 
@@ -13,9 +14,10 @@ is_root() {
 has_sudo() {
         sudo -nv 2>/dev/null
 
-        if [ $? -eq 0 ]; then
-                return 0
+        if [ $? -eq0 ]; then
+                ok
 	else
-		return 1
+		error "Error, User has to be in sudoers group."
+		exit_f
         fi
 }
